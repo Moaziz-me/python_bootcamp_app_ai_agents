@@ -10,13 +10,18 @@
 #     todos.append(todo.capitalize())  # add new item
 #     print(todos)
 
+
 todos = []
 
 while True:
-    user_action = input("Type add or show: ")
+    user_action = input("Type add, show or exit: ")
 
     match user_action:
         case "add":
-            todos.append(user_action)
+            todo = input("Enter a todo: ")
+            todos.append(todo)
         case "show":
             print(todos)
+        case "exit":
+            break
+print("Bye")
