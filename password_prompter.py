@@ -1,18 +1,17 @@
-
-
-result = []
-# while True:
 password = input("Enter your password: ")
+
+result = {}
+
 if len(password) >= 8:
-    result.append(True)
+    result["length"] = True
 else:
-    result.append(False)
+    result["length"] = False
 digit = False
 for i in password:
     if i.isdigit():
         digit = True
 
-result.append(digit)
+result["digit"] = digit
 
 uppercase = False
 
@@ -20,6 +19,11 @@ for i in password:
     if i.isupper():
         uppercase = True
 
-result.append(uppercase)
+result["uppercase"] = uppercase
 
-print(all(result))
+print(result)
+
+if all(result.values()):
+    print("Password accepted")
+else:
+    print("Password rejected")
