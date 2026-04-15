@@ -3,7 +3,7 @@ while True:
     user_action = user_action.strip()
 
     if 'add' in user_action:
-        todo = input("Neter a todo: ") + "\n"
+        todo = input("Enter a todo: ") + "\n"
 
         with open('todos.txt', 'r') as file:
             todos = file.readlines()
@@ -50,7 +50,7 @@ while True:
         message = f"Todo {todo_to_remove} was removed from the list"
         print(message)
 
-    if exit in user_action:
+    if 'exit' in user_action:
         break
     
 print("Bye")
