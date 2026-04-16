@@ -1,7 +1,5 @@
 This is my first todo today!
-This is my second toda today!
 The code further optimized !
-
 commit this as start of the day!
 expection handled !
 what is wrong with code now?
