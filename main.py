@@ -1,13 +1,17 @@
+def get_todos():
+    with open('todos.txt', 'r') as file:
+        todos = file.readlines()
+    return todos
+
 while True:
     user_action = input("Type add, show, edit, complete or exit: ")
     user_action = user_action.strip()
 
     if user_action.startswith("add"):
-        todo = user_action[4:] + '\n'
+        todo = user_action[4:]
         # single \n create a line before and after the code
 
-        with open('todos.txt', 'r') as file:
-            todos = file.readlines()
+        todos = get_todos()
 
         todos.append(todo+"\n")
 
@@ -16,13 +20,12 @@ while True:
 
     elif user_action.startswith("show"):
 
-        with open('todos.txt', 'r') as file:
-            todos = file.readlines()
+        todos = get_todos()
 
-            for index, item in enumerate(todos):
-                item = item.strip('\n')
-                row = f"{index + 1}-{item}"
-                print(row)
+        for index, item in enumerate(todos):
+            item = item.strip('\n')
+            row = f"{index + 1}-{item}"
+            print(row)
 
     elif user_action.startswith("edit"):
         try:
@@ -31,8 +34,7 @@ while True:
 
             number = number - 1
 
-            with open('todos.txt', 'r') as file:
-                todos = file.readlines()
+            todos = get_todos()
 
             new_todo = input("Enter new todo: ")
             todos[number] = new_todo + '\n'
@@ -47,8 +49,8 @@ while True:
         try:
             number = int(user_action[9:])
 
-            with open('todos.txt', 'r') as file:
-                todos = file.readlines()
+            todos = get_todos()
+
             index = number - 1
             todo_to_remove = todos[index].strip('\n')
             todos.pop(index)
