@@ -1,4 +1,6 @@
-def get_todos(filepath = "todos.txt"):
+FILEPATH = "todos.txt"
+
+def get_todos(filepath = FILEPATH):
     """
     Read a text file and return a list of the todos
     """
@@ -6,6 +8,6 @@ def get_todos(filepath = "todos.txt"):
         todos = file_local.readlines()
     return todos
 
-def write_todos(todos_arg, file_path = "todos.txt"):
+def write_todos(todos_arg, file_path = FILEPATH):
     with open(file_path, "w") as file_local:
         file_local.writelines(todos_arg)
