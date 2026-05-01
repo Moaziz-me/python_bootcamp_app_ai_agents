@@ -1,7 +1,4 @@
-def get_todos(filepath):
-    with open(filepath, 'r') as file_local:
-        todos = file_local.readlines()
-    return todos
+from functions import get_todos, write_todos
 
 while True:
     user_action = input("Type add, show, edit, complete or exit: ")
@@ -11,16 +8,15 @@ while True:
         todo = user_action[4:]
         # single \n create a line before and after the code
 
-        todos = get_todos("todos.txt")
+        todos = get_todos()
 
         todos.append(todo+"\n")
 
-        with open('todos.txt', 'w') as file:
-            file.writelines(todos)
+        write_todos(todos)
 
     elif user_action.startswith("show"):
 
-        todos = get_todos("todos.txt")
+        todos = get_todos()
 
         for index, item in enumerate(todos):
             item = item.strip('\n')
@@ -34,13 +30,13 @@ while True:
 
             number = number - 1
 
-            todos = get_todos("todos.txt")
+            todos = get_todos()
 
             new_todo = input("Enter new todo: ")
             todos[number] = new_todo + '\n'
 
-            with open('todos.txt', 'w') as file:
-                file.writelines(todos)
+            write_todos(todos)
+
         except ValueError:
             print("Invalid input")
             continue
@@ -49,14 +45,13 @@ while True:
         try:
             number = int(user_action[9:])
 
-            todos = get_todos("todos.txt")
+            todos = get_todos()
 
             index = number - 1
             todo_to_remove = todos[index].strip('\n')
             todos.pop(index)
 
-            with open('todos.txt', 'w') as file:
-                file.writelines(todos)
+            write_todos(todos)
 
             message = f"Todo {todo_to_remove} was removed from the list"
             print(message)
