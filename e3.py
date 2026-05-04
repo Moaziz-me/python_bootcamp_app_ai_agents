@@ -6,7 +6,7 @@ with open("questions.json", "r") as file:
 data = json.loads(data)
 
 
-score = 0
+
 for q in data:
     print(q["question_text"])
     for i, a in enumerate(q["alternatives"]):
@@ -14,10 +14,15 @@ for q in data:
     user_choice = int(input("Enter your choice: "))
     q["user_choice"] = user_choice
 
+
+score = 0
+for q in data:
     if q["user_choice"] == q["correct_answer"]:
         score = score + 1
+        result = "Correct Answer"
+    else:
+        result = "Incorrect Answer"
 
-for q in data:
     message = f"Your answer: {q['user_choice']},"\
             f"Correct Answer: {q['correct_answer']}"
     print(message)
