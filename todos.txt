@@ -1,2 +1,3 @@
 what is going on?
 This is day 13 of coding Python! Wow hoo
+Practice an hour, Wednesday May 13th !
